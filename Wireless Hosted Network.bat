@@ -1,5 +1,5 @@
 @echo off
-title Adhoc Network Hoster 1.02 by William Nichols
+title Adhoc Network Hoster 1.03 by William Nichols
 :top
 rem Cheap dirty way to check if we're admin
 reg add HKLM\software\netsh /v amIAdmin /f >nul 2>nul
@@ -53,9 +53,11 @@ goto Menu
 :Temp
 cls
 echo What's the SSID?
-set /p SSID=""
+set /p SSID=
+set SSID="%SSID%"
 echo What's the Passphrase?
 set /p key=
+set key="%key%"
 netsh wlan set hostednetwork ssid=%SSID% key=%key% keyUsage=temporary
 netsh wlan start hostednetwork
 
@@ -65,9 +67,11 @@ goto Menu
 :Edit
 cls
 echo What's the SSID?
-set /p SSID=""
+set /p SSID=
+set SSID="%SSID%"
 echo What's the Passphrase?
 set /p key=
+set key="%key%"
 netsh wlan set hostednetwork ssid=%SSID% key=%key%
 
 pause
